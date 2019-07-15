@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $locations = \DB::table('location')->get();
+        $userId = \Auth::id();
+
+        return view('home')->with(['locations'=>$locations,'user_id'=> $userId]);
     }
 }
